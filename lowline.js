@@ -1,8 +1,3 @@
-global._ = {};
-global._.info = function(){
-  console.log('oldRunning');
-};
-
 (function() {
   root = this;
 
@@ -20,6 +15,3 @@ global._.info = function(){
   root._ = _;
 
 }());
-
-_.info();
-_.getBackup().info();
