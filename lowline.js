@@ -8,10 +8,14 @@
     return this.backup;
   };
 
+  _.VERSION = '0.0.1';
+
   _.info = function(){
-    console.log('newRunning');
+    console.log('lowline.js ver' + this.VERSION);
   };
 
   root._ = _;
 
 }());
+
+_.info();
