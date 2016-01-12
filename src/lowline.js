@@ -10,12 +10,10 @@
 
   _.VERSION = '0.0.1';
 
-  _.info = function(){
-    console.log('lowline.js ver' + this.VERSION);
+  _.getVersion = function(){
+    return this.VERSION;
   };
 
   root._ = _;
 
 }());
-
-_.info();
