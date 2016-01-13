@@ -1,3 +1,12 @@
+var log = console.log.bind(console);
+function test(func, input, output) {
+  if (func(input) === output) {
+
+  } else {
+
+  }
+}
+
 (function() {
 // ****************************************************************************
 root = this;
@@ -18,7 +27,7 @@ _.getVersion = function(){
 // ----------------------------------------------------------------------------
 // Collections
 
-_.each = function(){};
+_.each = function(list, iteratee, context){};
 _.map = function(){};
 _.reduce = function(){};
 _.reduceRight = function(){};
@@ -109,12 +118,36 @@ _.has = function(){};
 _.matcher = function(){};
 _.property = function(){};
 _.propertyOf = function(){};
-_.isEqual = function(){};
-_.isMatch = function(){};
-_.isEmpty = function(){};
+// -------------------------------------------------
+// -------------------------------------------------
+// -------------------------------------------------
+_.isUndefined = function(data){
+  return data === undefined;
+};
+
+_.isObject = function(data){
+  return typeof data === 'object';
+};
+
+_.isArray = function(data){
+  return _.isObject(data) && !_.isUndefined(data.length);
+};
+
+_.isEmpty = function(data){
+  if (_.isUndefined(data.length)) {
+    // has no length property, is it an object?
+    if (_.isObject(data)) {
+      // check number of keys
+      return !(Object.keys(data).length > 0);
+    } else {
+      return true
+    }
+  } else {
+    return !(data.length > 0);
+  }
+};
+
 _.isElement = function(){};
-_.isArray = function(){};
-_.isObject = function(){};
 _.isArguments = function(){};
 _.isFunction = function(){};
 _.isString = function(){};
@@ -125,7 +158,21 @@ _.isDate = function(){};
 _.isRegExp = function(){};
 _.isNan = function(){};
 _.isNull = function(){};
-_.isUndefined = function(){};
+
+_.isEqual = function(){
+  // TODO: deep comparison between 2 objects
+};
+// _.isMatch = function(object, properties){
+//   log(object, properties);
+//   var keys = Object.keys(properties);
+//   for (var i=0; i < keys.length; i++) {
+//     var key = keys[i];
+//     if (_.isUndefined(undefined)) log('UNDEFINED');
+//   }
+//   return true;
+// };
+// _.isMatch({'a':1, 'b':'z', c:null}, {'b':'z'});
+
 
 // ----------------------------------------------------------------------------
 // Utility
